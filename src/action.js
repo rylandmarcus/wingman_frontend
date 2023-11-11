@@ -28,6 +28,8 @@ export const activateProfile = async ({request})=>{
         promptAnswers: [formData.get('answer1'), formData.get('answer2'), formData.get('answer3')],
         gender: formData.get('gender'),
         interestedIn: interestedIn,
+        age: formData.get('age'),
+        job: formData.get('job'),
     }
     await fetch(URL+'users/'+token, {
         method: 'PUT',

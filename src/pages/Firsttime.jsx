@@ -42,7 +42,6 @@ const Firsttime = () => {
                 })}
             </select>
             <input type="text" name='answer1' placeholder='Answer to your first prompt' required/>
-
             <select name='question2' required>
                 {questions.map((q,i)=>{
                   return <option key={i} value={i}>{q}</option>
@@ -71,6 +70,8 @@ const Firsttime = () => {
                 <option value="5">Women and Non-Binary</option>
                 <option value="6">Everyone</option>
             </select>
+            <input type="text" name='job' required placeholder='job'/>
+            <input type="text" name='age' required placeholder='age'/>
             <input type="submit" value="Activate Profile!"/>
         </Form>
     </div>

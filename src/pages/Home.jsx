@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import Logout from '../components/Logout'
 
 const Home = () => {
     const questions = [
@@ -41,6 +42,13 @@ const Home = () => {
   return (
     <div>
         <h1>Home</h1>
+        <Logout></Logout>
+        <Link to={`/profiles/${user._id}`}>
+        <button>My Profile</button>
+        </Link>
+        <button>Messages</button>
+        <button>Matches</button>
+        <button>Find Matches</button>
         <div>{user.username}</div>
         <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
             <img style={pictureStyle} src={user.profilePic} alt={user.username} />
@@ -55,6 +63,8 @@ const Home = () => {
         <div>{user.promptAnswers[1]}</div>
         <div>{questions[user.promptChoices[2]]}</div>
         <div>{user.promptAnswers[2]}</div>
+        <div>Age: {user.age}</div>
+        <div>Job: {user.job}</div>
         <div>Gender: {genders[user.gender]}</div>
         <div>Interested In:</div>
         {user.interestedIn.map(i=>{return genders[i]})}

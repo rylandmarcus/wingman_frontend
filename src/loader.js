@@ -10,3 +10,14 @@ export const userLoad = async ()=>{
         return data
     }
     }
+
+export const profileLoad = async ({params})=>{
+    const token = localStorage.getItem('token')
+    if(!token){
+        window.location.href = '/login'
+    } else{
+        const response = await fetch(process.env.REACT_APP_URL+'users/'+params.id)
+        const data = await response.json()
+        return data
+    }
+}

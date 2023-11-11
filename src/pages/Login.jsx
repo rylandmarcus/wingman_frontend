@@ -21,7 +21,7 @@ const Login = () => {
             //   localStorage.setItem('token', data.token)
               console.log(localStorage.getItem('token'))
             //   navigate('/test')
-              window.location.href = '/test'
+              window.location.href = '/home'
             } else {
               console.error('Login failed');
               document.querySelector('#errorSlot').innerText = 'Login failed'
