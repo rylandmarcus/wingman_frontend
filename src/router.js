@@ -4,11 +4,12 @@ import Test from "./pages/Test";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
-import { profileLoad, userLoad } from "./loader";
+import { findMatches, profileLoad, userLoad } from "./loader";
 import Firsttime from "./pages/Firsttime";
 import { activateProfile } from "./action";
 import Profile from "./pages/Profile";
 import Editprofile from "./pages/Editprofile";
+import Findmatches from "./pages/Findmatches";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
             <Route path="/activate" action={activateProfile}></Route>
             <Route path="/profiles/:id" element={<Profile></Profile>} loader={profileLoad}></Route>
             <Route path="/editprofile" element={<Editprofile></Editprofile>} loader={userLoad}></Route>
+            <Route path="/findmatches" element={<Findmatches></Findmatches>} loader={findMatches}></Route>
         </Route>
     )
 )

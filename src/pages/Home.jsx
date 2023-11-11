@@ -42,13 +42,6 @@ const Home = () => {
   return (
     <div>
         <h1>Home</h1>
-        <Logout></Logout>
-        <Link to={`/profiles/${user._id}`}>
-        <button>My Profile</button>
-        </Link>
-        <button>Messages</button>
-        <button>Matches</button>
-        <button>Find Matches</button>
         <div>{user.username}</div>
         <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
             <img style={pictureStyle} src={user.profilePic} alt={user.username} />

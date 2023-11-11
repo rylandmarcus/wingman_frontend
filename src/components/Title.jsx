@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Title = () => {
     // const [componentOpened, setComponentOpened] = useState(false)
@@ -9,7 +10,9 @@ const Title = () => {
     const loggedInTitle = ()=>{
         return(
             <div>
-                <h1>Wingman Logged in</h1>
+                <Link to="/home" style={{textDecoration:'none', color:'black'}}>
+                    <h1 >Wingman Logged in</h1>
+                </Link>
             </div>
         )
     }
