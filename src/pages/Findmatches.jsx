@@ -29,7 +29,9 @@ const Findmatches = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({}),
       });
-      //if reactedTo.likes includes token then match
+      if (reactedTo.likes.includes(token)){
+        console.log('match');
+      }
     }
     const dislikeReaction = async (e)=>{
       e.preventDefault()
