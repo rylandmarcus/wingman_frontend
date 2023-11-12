@@ -78,7 +78,7 @@ const Editprofile = () => {
                 <option value="6">Everyone</option>
             </select>
             <input type="text" name='job' defaultValue={user.job} required placeholder='job'/>
-            <input type="text" name='age' defaultValue={user.age} required placeholder='age'/>
+            <input type="number" name='age' defaultValue={user.age} required placeholder='age'/>
             <input type="submit" value="Update Profile!"/>
         </Form>
     </div>

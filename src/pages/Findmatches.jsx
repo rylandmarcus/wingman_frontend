@@ -2,46 +2,52 @@ import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 
 const Findmatches = () => {
+    const token = localStorage.getItem('token')
+    if (!token){
+        window.location.href = '/login'
+    }
     const data = useLoaderData()
     let shuffled = [...data]
     for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    console.log(data);
-    console.log(shuffled);
     const [users, setUsers] = useState(shuffled)
-    const [likedUsers, setLikedUsers] = useState([])
-    const [dislikedUsers, setDislikedUsers] = useState([])
+    // const [likedUsers, setLikedUsers] = useState([])
+    // const [dislikedUsers, setDislikedUsers] = useState([])
     // if users is empty, then it will offer to go through the dislikes again
-    const likeReaction = (e)=>{
+    const likeReaction = async (e)=>{
       e.preventDefault()
       let newUsers = [...users]
       const reactedTo = newUsers.shift()
-      let newLikedUsers = [...likedUsers]
-      newLikedUsers.push(reactedTo)
-      setLikedUsers(newLikedUsers)
+      // let newLikedUsers = [...likedUsers]
+      // newLikedUsers.push(reactedTo)
+      // setLikedUsers(newLikedUsers)
       setUsers(newUsers)
-      console.log('liked');
-      console.log(likedUsers);
-      console.log('all');
-      console.log(users);
+      await fetch(process.env.REACT_APP_URL+'users/'+token+'/like/'+reactedTo._id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
+      //if reactedTo.likes includes token then match
     }
-    const dislikeReaction = (e)=>{
+    const dislikeReaction = async (e)=>{
       e.preventDefault()
       let newUsers = [...users]
       const reactedTo = newUsers.shift()
-      let newDislikedUsers = [...dislikedUsers]
-      newDislikedUsers.push(reactedTo)
-      setDislikedUsers(newDislikedUsers) 
+      // let newDislikedUsers = [...dislikedUsers]
+      // newDislikedUsers.push(reactedTo)
+      // setDislikedUsers(newDislikedUsers) 
       setUsers(newUsers)
-      console.log('disliked');
-      console.log(dislikedUsers);
-      console.log('all');
-      console.log(users);
+      await fetch(process.env.REACT_APP_URL+'users/'+token+'/dislike/'+reactedTo._id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
     }
-  return (
-    <div>
+    const remainingPeople = ()=>{
+      return(
+        <div>
       <h2>Find a Match!</h2>
       <div style={{border:'solid black 2px'}}>
         <img src={users[0].profilePic} alt={users[0].username} />
@@ -55,7 +61,9 @@ const Findmatches = () => {
       <button onClick={dislikeReaction}>NOPE</button>
       <button onClick={likeReaction}>YEP</button>
     </div>
-  )
+      )
+    }
+    return users.length==0 ? <div>There are no more people to match with</div> : remainingPeople()
 }
 
 export default Findmatches

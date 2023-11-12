@@ -71,7 +71,7 @@ const Firsttime = () => {
                 <option value="6">Everyone</option>
             </select>
             <input type="text" name='job' required placeholder='job'/>
-            <input type="text" name='age' required placeholder='age'/>
+            <input type="number" name='age' required placeholder='age'/>
             <input type="submit" value="Activate Profile!"/>
         </Form>
     </div>
