@@ -11,8 +11,12 @@ const NavBar = () => {
                 <Link to={`/profiles/${token}`}>
                 <button>My Profile</button>
                 </Link>
+                <Link to="/messages/none">
                 <button>Messages</button>
+                </Link>
+                <Link to="/matches">
                 <button>Matches</button>
+                </Link>
                 <Link to="/findmatches">
                 <button>Find Matches</button>
                 </Link>

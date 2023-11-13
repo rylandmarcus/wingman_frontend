@@ -24,13 +24,24 @@ const Findmatches = () => {
       // newLikedUsers.push(reactedTo)
       // setLikedUsers(newLikedUsers)
       setUsers(newUsers)
+      // let match = false
+      // if (reactedTo.likes.includes(token)){
+      //   match = true
+      // }
       await fetch(process.env.REACT_APP_URL+'users/'+token+'/like/'+reactedTo._id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({}),
+        // body: JSON.stringify({match:match}),
       });
       if (reactedTo.likes.includes(token)){
         console.log('match');
+        //post a new chat
+        // const newChat = await fetch(process.env.REACT_APP_URL+'chats/'+token+'/'+reactedTo._id, {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({}),
+        // });
       }
     }
     const dislikeReaction = async (e)=>{
