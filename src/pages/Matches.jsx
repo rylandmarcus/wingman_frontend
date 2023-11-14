@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
+import Unmatch from '../components/Unmatch'
 
 const Matches = () => {
     const matches = useLoaderData()
@@ -18,7 +19,7 @@ const Matches = () => {
                     </div>
                     </Link>
                     <Link to={`/messages/${match._id}`}><button>Message</button></Link>
-                    <Link><button>Unmatch</button></Link>
+                    <Unmatch profileId={match._id} name={match.firstName}></Unmatch>
                     </div>
                 )
             })}

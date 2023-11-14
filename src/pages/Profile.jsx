@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
+import Unmatch from '../components/Unmatch'
 
 const Profile = () => {
     const profile = useLoaderData()
@@ -14,9 +15,9 @@ const Profile = () => {
         {profile.username}
         </div>
         {myProfile ? <Link to="/editprofile"><button>Update Profile</button></Link> : 
-        <div>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
             <Link to={`/messages/${profile._id}`}><button>Message</button></Link>
-            <Link><button>Unmatch</button></Link>
+            <Unmatch profileId={profile._id} name={profile.firstName}></Unmatch>
         </div>}
     </div>
   )
