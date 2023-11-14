@@ -17,7 +17,7 @@ const Matches = () => {
                         <h3>{match.firstName+' '+match.lastName}</h3>
                     </div>
                     </Link>
-                    <Link><button>Message</button></Link>
+                    <Link to={`/messages/${match._id}`}><button>Message</button></Link>
                     <Link><button>Unmatch</button></Link>
                     </div>
                 )

@@ -9,17 +9,19 @@ const Messages = () => {
     const chats = [...data]
     // const [openChatId, setOpenIdChat] = useState(openChatIdParam)
     // const [openChat, setOpenChat] = useState('none')
-    const oChat = chats.find(chat=>chat._id==openChatIdParam.id)
-    console.log(oChat);
+    const oChat = chats.find(chat=>chat._id==openChatIdParam.id) ? 
+      chats.find(chat=>chat._id==openChatIdParam.id) : 
+        chats.find(chat=>chat.users[0]._id==openChatIdParam.id) ? chats.find(chat=>chat.users[0]._id==openChatIdParam.id) : null
+    // console.log(oChat);
     // // setOpenChat(oChat)
     // if (!oChat){
     //     setOpenChat({id:'none'})
     // }
     // console.log(openChat);
   return (
-    <div>
+    <div >
         <h2>Messages</h2>
-        <div>
+        <div className='messagesBigContainer'>
             {chats.map(chat=>{
                 return <div key={chat._id}>
                 {/* return <div key={chat.users[0]._id}> */}

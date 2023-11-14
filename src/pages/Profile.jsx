@@ -13,7 +13,11 @@ const Profile = () => {
         <div>
         {profile.username}
         </div>
-        {myProfile ? <Link to="/editprofile"><button>Update Profile</button></Link> : null}
+        {myProfile ? <Link to="/editprofile"><button>Update Profile</button></Link> : 
+        <div>
+            <Link to={`/messages/${profile._id}`}><button>Message</button></Link>
+            <Link><button>Unmatch</button></Link>
+        </div>}
     </div>
   )
 }

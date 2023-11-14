@@ -16,7 +16,6 @@ import Messages from "./pages/Messages";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App></App>}>
-            <Route path="/test" element={<Test></Test>}></Route>
             <Route path="/login" element={<Login></Login>}></Route>
             <Route path="/signup" element={<Signup></Signup>}></Route>
             <Route path="/home" element={<Home></Home>} loader={userLoad}></Route>
