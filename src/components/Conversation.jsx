@@ -8,7 +8,37 @@ const Conversation = ({convo}) => {
     const token = localStorage.getItem('token')
     const [chat, setChat] = useState(convo)
     const [chatCopy, setChatCopy] = useState(chat)
-    // console.log(chat);
+    const [answer, setAnswer] = useState('')
+    const ask = async (e)=>{
+        e.preventDefault()
+        setAnswer('Loading...')
+        let convoString = ''
+        chatCopy.messages.forEach((message, i)=>{
+            if (chatCopy.authors[i]==token){
+                convoString += 'User: '+message+', '
+            } else {
+                convoString += 'Them: '+message+', '
+            }
+        })
+        console.log(convoString);
+        const question = document.querySelector('.question').value
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.REACT_APP_GPT_KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a conversation between the user and someone they are flirting with, you must respond with what the user should send next. Be flirtatious. respond with just the body of the message, no user header.' }, { role: 'user', content: convoString }]
+                // messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a message, you must respond how you would if it were someone flirting with you. Be flirtatious' }, { role: 'user', content: question }]
+            })
+        })
+        const data = await response.json()
+        console.log(data);
+        console.log(data.choices[0].message.content);
+        setAnswer(data.choices[0].message.content)
+    }
     useEffect(()=>{
         async function fetchConversation (){
             const response = await fetch(process.env.REACT_APP_URL+'chats/'+token+'/chat/'+convo._id);
@@ -38,7 +68,7 @@ const Conversation = ({convo}) => {
     },[chat])
     const send = (e)=>{
         e.preventDefault()
-        const message = document.querySelector('input[type=text]').value
+        const message = document.querySelector('.messageText').value
         socket.emit('message', message, chat._id, token)
     }
     const typing = (e)=>{
@@ -57,7 +87,7 @@ const Conversation = ({convo}) => {
                 document.querySelector('.typing').innerHTML = 'They are typing...'
                 setTimeout(function(){
                     document.querySelector('.typing').innerHTML = ''
-                }, 600)
+                }, 2000)
             }
         })
     }, [socket])
@@ -66,9 +96,11 @@ const Conversation = ({convo}) => {
             <div>Conversation with {chat.users[0].firstName}</div>
             {chatCopy.messages.length==0 ? <div>Start the conversation!</div> : <Chatdisplay chat={chatCopy}></Chatdisplay>}
             <p className='typing'></p>
-            <input onChange={typing} type="text" />
+            <input className='messageText' onChange={typing} type="text" />
             <button onClick={send}>Send</button>
-            <div className='receive'></div>
+            <button onClick={ask}>Help</button>
+            <div className='gpt'>{answer}</div>
+            <input type="text" className='question'/>
         </div>
         
     )

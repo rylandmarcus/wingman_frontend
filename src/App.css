@@ -46,3 +46,73 @@
   display: flex;
   flex-direction: row;
 } */
+
+.welcomePageButton{
+  border-radius:15px;
+  height:30px;
+  color:#D6D6D7;
+  background-color:#202124;
+  border:1px solid #D6D6D7;
+  width: 200px;
+}
+
+.welcomePageButton:hover{
+  background-color:#D6D6D7;
+  color:#202124;
+  border:1px solid #202124;
+}
+
+.authInput{
+  border-radius:20px;
+  height:30px;
+  color:#D6D6D7;
+  background-color:#202124;
+  border:1px solid #D6D6D7;
+  width: 200px;
+}
+
+.authInput:focus{
+  outline: none;
+  color: #202124;
+  background-color: #D6D6D7;
+}
+
+.navButton{
+  border-radius:0px;
+  font-size: large;
+  height:150px;
+  width: 300px;
+  color:#D6D6D7;
+  background-color:#202124;
+  border: 0px;
+  width: 200px;
+  padding: 20px;
+}
+
+.navButton:hover{
+  background-color: lightcoral;
+  color:#202124;
+  border:1px solid #202124;
+}
+
+.homeButton:hover{
+  background-color: lightcoral;
+  color:#202124;
+  border:1px solid #202124;
+}
+
+.profileButton {
+  border-radius: 25px;
+  height: 50px;
+  width: 200px;
+  font-size: larger;
+  margin: 20px;
+  color: #202124;
+  background-color: lightcoral;
+}
+
+.profileButton:hover {
+  background-color: #202124;
+  color: lightcoral;
+  border: 1px solid lightcoral;
+}

@@ -6,20 +6,29 @@ const NavBar = () => {
     const token = localStorage.getItem('token')
     const loaded = ()=>{
         return(
-            <div>
-                <Logout></Logout>
+            <div style={{
+                display:'flex',
+                flexDirection:'row',
+                justifyContent: 'space-around',
+                // alignItems:'space-around',
+                marginRight:'20px',
+                width:'100%',
+                height:'100px',
+                backgroundColor:'#202124',
+            }}>
                 <Link to={`/profiles/${token}`}>
-                <button>My Profile</button>
+                <button className='navButton'>My Profile</button>
                 </Link>
                 <Link to="/messages/none">
-                <button>Messages</button>
+                <button className='navButton'>Messages</button>
                 </Link>
                 <Link to="/matches">
-                <button>Matches</button>
+                <button className='navButton'>Matches</button>
                 </Link>
                 <Link to="/findmatches">
-                <button>Find Matches</button>
+                <button className='navButton'>Find Matches</button>
                 </Link>
+                <Logout></Logout>
             </div>
         )
     }

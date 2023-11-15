@@ -31,15 +31,41 @@ const Login = () => {
           }
     }
   return (
-    <div>
-        <h1>Login</h1>
-        <form onSubmit={login}>
-            <input type="text" name='username' placeholder='username' required/>
-            <input type="text" name='password' placeholder='password' required/>
-            <input type="submit" value="login"/>
+    <div style={{
+      backgroundImage:'linear-gradient(lightcoral, red)', 
+      height:'1000px',
+      display:'flex',
+      justifyContent:'center',
+      }}>
+        <div style={{
+            height: '500px',
+            width: '370px',
+            backgroundColor:'#202124',
+            borderRadius:'50px',
+        }}>
+          <div style={{height:'50px'}}>
+            <img style={{
+                height:'100px',
+                width:'100px',                    
+            }} src='/wingmanLogo.png' alt="Wingman Logo" />            
+            </div>
+        <h1 style={{color:'#D6D6D7'}}>Log in</h1>
+        <form onSubmit={login} style={{
+          display:'flex',
+          flexDirection:'column',
+          width:'250px',
+          margin:'auto',
+          height:'200px',
+          justifyContent:'space-around',
+          alignItems:'center',
+          }}>
+            <input className='authInput' type="text" name='username' placeholder=' username' required/>
+            <input className='authInput' type="password" name='password' placeholder=' password' required/>
+            <input className='welcomePageButton' type="submit" value="Log in"/>
         </form>
-        <div id='errorSlot'></div>
-        <div>Don't Have an Account? <span><Link to="/signup">Sign Up Here</Link></span></div>
+        <div style={{color:'#D6D6D7'}} id='errorSlot'></div>
+        <div style={{color:'#D6D6D7', paddingTop:'25px'}}>Don't Have an Account? <span><Link to="/signup">Sign Up Here</Link></span></div>
+        </div>
     </div>
   )
 }
