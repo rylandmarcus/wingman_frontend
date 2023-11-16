@@ -21,7 +21,7 @@ const Conversation = ({convo}) => {
             }
         })
         console.log(convoString);
-        const question = document.querySelector('.question').value
+        // const question = document.querySelector('.question').value
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -46,6 +46,7 @@ const Conversation = ({convo}) => {
             setChat(data)
             setChatCopy(data)
             console.log('test');
+            document.querySelector('.messageText').value = ''
             // console.log(chat.users[0]);
         }
         fetchConversation()
@@ -70,6 +71,7 @@ const Conversation = ({convo}) => {
         e.preventDefault()
         const message = document.querySelector('.messageText').value
         socket.emit('message', message, chat._id, token)
+        document.querySelector('.messageText').value = ''
     }
     const typing = (e)=>{
         e.preventDefault()
@@ -105,11 +107,13 @@ const Conversation = ({convo}) => {
             <div style={{
                 display:'flex',
                 flexDirection:'column',
-                justifyContent:'flex-start',
+                // justifyContent:'flex-start',
                 height:'450px',
                 overflowY:'scroll',
                 // marginBottom:'10px',
                 border:'2px solid lightcoral',
+                backgroundColor:'#454851',
+                // width:'400px',
             }}>
             {chatCopy.messages.length==0 ? <div>Start the conversation!</div> : <Chatdisplay chat={chatCopy}></Chatdisplay>}
             </div>
@@ -117,11 +121,55 @@ const Conversation = ({convo}) => {
                 margin:'0px',
                 height:'25px',
             }}></p>
-            <input className='messageText' onChange={typing} type="text" />
-            <button onClick={send}>Send</button>
-            <button onClick={ask}>Help</button>
+            <div style={{
+                backgroundColor:'#D6D6D7',
+                height:'40px',
+                width:'700px',
+                borderRadius:'25px',
+                display:'flex',
+                flexDirection:'row',
+                alignItems:'center',
+                justifyContent:'space-between',
+                border:'2px solid lightcoral',
+                margin: 'auto',
+                // padding:'3px 3px 3px 5px',
+            }}>
+            <input style={{
+                height:'40px',
+                width:'600px',
+                borderRadius:'20px',
+                backgroundColor:'#454851',
+                outline:'none',
+                border:'none',
+                fontSize:'20px',
+                paddingLeft:'10px',
+                color:'#D6D6D7',
+            }} className='messageText' onChange={typing} type="text" placeholder='Type Message Here' />
+            <button style={{
+                height:'40px',
+                width:'40px',
+                borderRadius:'50%',
+                fontSize:'20px',
+                backgroundColor:'lightcoral',
+            }} onClick={send}>⬆︎</button>
+            <button style={{
+                height:'40px',
+                width:'60px',
+                borderRadius:'20px',
+            
+            }} onClick={ask}>
+                {/* <div style={{height:'20px', width:'20px'}}> */}
+                <img style={{
+                    height:'50px',
+                    width:'50px',
+                    borderRadius:'50%',
+                
+                }} src='/wingmanLogo.png' alt="Wingman Logo" />
+                {/* </div> */}
+            </button>
+            </div>
             <div className='gpt'>{answer}</div>
-            <input type="text" className='question'/>
+            {/* <input type="text" className='question'/> */}
         </div>
         
     )
