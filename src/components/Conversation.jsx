@@ -29,12 +29,13 @@ const Conversation = ({convo}) => {
                 'Authorization': `Bearer ${process.env.REACT_APP_GPT_KEY}`
             },
             body: JSON.stringify({
-                model: 'gpt-3.5-turbo',
+                // model: 'gpt-3.5-turbo',
+                model: 'gpt-4-1106-preview',
                 messages: [{ role: 'system', content:'You are a helpful assistant, helping someone flirt on a dating app. Emphasize the importance of context and make responses coherent. Your response should be in the form of a text message ready to send, do not include any commentary or headers'}, 
                 { role: 'user', content: 'You are a helpful assistant. Your task is to help me brainstorm my next message I will send to someone I am flirting with. You will receive a conversation string. Please pay attention and be careful about who sent which messages, to insure you have the context of the conversation. Please brainstorm and respond with what I should say next. Please make sure your response is only the message i should reply with.\nConversation string: \n'+ convoString+'\nI said:'}],
                 // { role: 'user', content: 'You are a helpful assistant. Your task is to brainstorm a new message to send from user to receiver. You will be receive a conversation string. If a line starts with User:, that is your own perspective, if a line starts with Receiver:, that is who you are talking to. There can be multiple messages in a row from the same perspective. Please pay attention and be careful about who sent which messages, to insure you have the context of the conversation. Please brainstorm and respond with what the user should say next.\nConversation string: '+ convoString+ '  User:' }]
                 temperature: 0.2,
-                max_tokens: 50
+                max_tokens: 70
             })
         })
         const data = await response.json()

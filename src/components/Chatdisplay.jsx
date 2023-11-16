@@ -13,7 +13,7 @@ const Chatdisplay = ({chat}) => {
     marginRight:'15px',
     marginBottom:'10px',
     marginTop:'10px',
-    maxWidth:'300px',
+    maxWidth:'400px',
     wordBreak:'break-all',
   }
   const styleTheirMessage = {
@@ -28,7 +28,7 @@ const Chatdisplay = ({chat}) => {
     marginRight:'auto',
     marginBottom:'10px',
     marginTop:'10px',
-    maxWidth:'300px',
+    maxWidth:'400px',
     wordBreak:'break-all',
   }
   return (
