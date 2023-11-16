@@ -23,7 +23,7 @@ const Unmatch = ({profileId, name}) => {
         <div className='unmatchInner'>
             <p>Are you sure you want to unmatch with {name}? This will also delete your converstaion history</p>
         <button className='unmatchClose' onClick={()=>setUnmatchTrigger(false)}>I'll give them another chance</button>
-        <button onClick={unmatch}>Unmatch</button>
+        <button className='welcomePageButton' onClick={unmatch}>Unmatch</button>
         </div>
     </div>
     </div>

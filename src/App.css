@@ -62,12 +62,27 @@
   border:1px solid #202124;
 }
 
+.unmatchClose{
+  border-radius:15px;
+  height:30px;
+  color:#D6D6D7;
+  background-color:#202124;
+  border:1px solid #D6D6D7;
+  width: 200px;
+}
+
+.unmatchClose:hover{
+  background-color:#D6D6D7;
+  color:#202124;
+  border:1px solid #202124;
+}
+
 .authInput{
   border-radius:20px;
   height:30px;
   color:#D6D6D7;
   background-color:#202124;
-  border:1px solid #D6D6D7;
+  border:1px solid lightcoral;
   width: 200px;
 }
 
