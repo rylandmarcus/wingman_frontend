@@ -30,7 +30,7 @@ const Conversation = ({convo}) => {
             },
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',
-                messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a conversation between the user and someone they are flirting with, you must respond with what the user should send next. Be flirtatious. respond with just the body of the message, no user header.' }, { role: 'user', content: convoString }]
+                messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a conversation between the user and someone they are flirting with, you must respond with what the user should send next. Be flirtatious. respond with just the body of the message, no user header. Only give suggestions from the users perspective for what they can say next.' }, { role: 'user', content: convoString }]
                 // messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a message, you must respond how you would if it were someone flirting with you. Be flirtatious' }, { role: 'user', content: question }]
             })
         })
@@ -92,10 +92,31 @@ const Conversation = ({convo}) => {
         })
     }, [socket])
     return (
-        <div>
-            <div>Conversation with {chat.users[0].firstName}</div>
+        <div style={{
+            display:'flex',
+            flexDirection:'column',
+            color:'#D6D6D7',
+        }}>
+            <div style={{
+                fontSize:'50px',
+                marginBottom:'20px',
+                marginTop:'20px',
+            }}>Conversation with {chat.users[0].firstName}</div>
+            <div style={{
+                display:'flex',
+                flexDirection:'column',
+                justifyContent:'flex-start',
+                height:'450px',
+                overflowY:'scroll',
+                // marginBottom:'10px',
+                border:'2px solid lightcoral',
+            }}>
             {chatCopy.messages.length==0 ? <div>Start the conversation!</div> : <Chatdisplay chat={chatCopy}></Chatdisplay>}
-            <p className='typing'></p>
+            </div>
+            <p className='typing' style={{
+                margin:'0px',
+                height:'25px',
+            }}></p>
             <input className='messageText' onChange={typing} type="text" />
             <button onClick={send}>Send</button>
             <button onClick={ask}>Help</button>

@@ -116,3 +116,18 @@
   color: lightcoral;
   border: 1px solid lightcoral;
 }
+
+.yesNo{
+  border-radius: 50px;
+  height: 600px;
+  width: 200px;
+  font-size: larger;
+  margin: 20px;
+  color: #202124;
+}
+
+.messageUser:hover{
+  background-color: lightcoral;
+  color:#202124;
+  border:1px solid #202124;
+}

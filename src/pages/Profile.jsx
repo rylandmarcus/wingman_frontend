@@ -21,7 +21,7 @@ const Profile = () => {
       'Man', 'Woman', 'Non-Binary'
   ]
   return (
-    <div style={{backgroundImage:'linear-gradient(white, pink, lightcoral, red)', minHeight:'1000px', padding:'50px 200px 0px 200px',}}>
+    <div style={{backgroundImage:'linear-gradient(white, pink, lightcoral, red)', minHeight:'1000px', padding:'50px 300px 0px 300px',}}>
         <div style={{
             backgroundColor:'#202124',
             border:'20px',
@@ -43,6 +43,8 @@ const Profile = () => {
         }}>
           <img style={{
             borderRadius:'50%',
+            width:'300px',
+          height:'300px',
           }} src={profile.profilePic} alt={profile.username} />
           <div style={{fontSize:'40px'}}>{profile.firstName+' '+profile.lastName}</div>
           <div style={{fontSize:'20px'}}>{profile.age} years old</div>

@@ -28,6 +28,8 @@ const Title = () => {
             <div style={{backgroundImage:'linear-gradient(white, pink, lightcoral)'}}>
                 <div style={{
                     height:'600px', 
+                    overflow:'hidden',
+                    // backgroundColor:'red'
                     // display:'flex', 
                     // justifyContent:'center', 
                     // alignItems:'center',

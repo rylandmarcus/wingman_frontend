@@ -61,7 +61,9 @@ const Home = () => {
             height:'120px',
             fontSize:'40px',
             border:'2px solid lightcoral',
-            width:'500px',
+            borderRadius:'30px',
+            minWidth:'500px',
+            width: 'fit-content',
             margin:'auto',
         }}>
             <img style={{
