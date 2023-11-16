@@ -147,3 +147,19 @@
   border:1px solid #202124;
 }
 
+.gptUseButton{
+  border-radius: 25px;
+  height: 30px;
+  width: 200px;
+  font-size: larger;
+  margin: 20px;
+  color: #202124;
+  background-color: lightcoral;
+  margin: auto;
+}
+
+.gptUseButton:hover{
+  background-color: #202124;
+  color: lightcoral;
+  border: 1px solid lightcoral;
+}

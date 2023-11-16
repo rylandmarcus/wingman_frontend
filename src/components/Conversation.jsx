@@ -8,16 +8,16 @@ const Conversation = ({convo}) => {
     const token = localStorage.getItem('token')
     const [chat, setChat] = useState(convo)
     const [chatCopy, setChatCopy] = useState(chat)
-    const [answer, setAnswer] = useState('')
+    const [answer, setAnswer] = useState('Your wingman is here to help if you need it!')
     const ask = async (e)=>{
         e.preventDefault()
         setAnswer('Loading...')
         let convoString = ''
         chatCopy.messages.forEach((message, i)=>{
             if (chatCopy.authors[i]==token){
-                convoString += 'User: '+message+', '
+                convoString += 'I said: '+message+'\n'
             } else {
-                convoString += 'Them: '+message+', '
+                convoString += 'They said: '+message+'\n'
             }
         })
         console.log(convoString);
@@ -30,8 +30,11 @@ const Conversation = ({convo}) => {
             },
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',
-                messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a conversation between the user and someone they are flirting with, you must respond with what the user should send next. Be flirtatious. respond with just the body of the message, no user header. Only give suggestions from the users perspective for what they can say next.' }, { role: 'user', content: convoString }]
-                // messages: [{ role: 'system', content: 'You are a helpful assistant, helping people respond to messages in a dating app. you will receive a message, you must respond how you would if it were someone flirting with you. Be flirtatious' }, { role: 'user', content: question }]
+                messages: [{ role: 'system', content:'You are a helpful assistant, helping someone flirt on a dating app. Emphasize the importance of context and make responses coherent. Your response should be in the form of a text message ready to send, do not include any commentary or headers'}, 
+                { role: 'user', content: 'You are a helpful assistant. Your task is to help me brainstorm my next message I will send to someone I am flirting with. You will receive a conversation string. Please pay attention and be careful about who sent which messages, to insure you have the context of the conversation. Please brainstorm and respond with what I should say next. Please make sure your response is only the message i should reply with.\nConversation string: \n'+ convoString+'\nI said:'}],
+                // { role: 'user', content: 'You are a helpful assistant. Your task is to brainstorm a new message to send from user to receiver. You will be receive a conversation string. If a line starts with User:, that is your own perspective, if a line starts with Receiver:, that is who you are talking to. There can be multiple messages in a row from the same perspective. Please pay attention and be careful about who sent which messages, to insure you have the context of the conversation. Please brainstorm and respond with what the user should say next.\nConversation string: '+ convoString+ '  User:' }]
+                temperature: 0.2,
+                max_tokens: 50
             })
         })
         const data = await response.json()
@@ -47,6 +50,7 @@ const Conversation = ({convo}) => {
             setChatCopy(data)
             console.log('test');
             document.querySelector('.messageText').value = ''
+            setAnswer('Your wingman is here to help if you need it!')
             // console.log(chat.users[0]);
         }
         fetchConversation()
@@ -70,6 +74,7 @@ const Conversation = ({convo}) => {
     const send = (e)=>{
         e.preventDefault()
         const message = document.querySelector('.messageText').value
+        setAnswer('Your wingman is here to help if you need it!')
         socket.emit('message', message, chat._id, token)
         document.querySelector('.messageText').value = ''
     }
@@ -93,6 +98,10 @@ const Conversation = ({convo}) => {
             }
         })
     }, [socket])
+    const useGPT = (e)=>{
+        e.preventDefault()
+        document.querySelector('.messageText').value = answer
+    }
     return (
         <div style={{
             display:'flex',
@@ -169,6 +178,7 @@ const Conversation = ({convo}) => {
             </button>
             </div>
             <div className='gpt'>{answer}</div>
+            {answer=='Your wingman is here to help if you need it!' || answer=='Loading...' ? <div></div> : <button onClick={useGPT} className='gptUseButton'>Use</button>}
             {/* <input type="text" className='question'/> */}
         </div>
         
