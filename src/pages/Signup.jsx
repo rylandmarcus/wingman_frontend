@@ -43,7 +43,7 @@ const Signup = () => {
                 width:'100px',                    
             }} src='/wingmanLogo.png' alt="Wingman Logo" />            
             </div>
-        <h1 style={{color:'#D6D6D7'}}>Sign Up</h1>
+        <h1 style={{color:'#D6D6D7'}} className='needsFontHeading'>Sign Up</h1>
         <form onSubmit={signUp} style={{
           display:'flex',
           flexDirection:'column',

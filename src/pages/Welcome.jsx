@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Welcome = () => {
   return (
-    <div style={{
+    <div className='needsFontHeading' style={{
         backgroundImage:'linear-gradient(lightcoral, red)', 
         height:'1000px',
         display:'flex',
