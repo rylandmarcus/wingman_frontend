@@ -65,23 +65,3 @@ const Profile = () => {
 }
 
 export default Profile
-
-{/* <div>{user.username}</div>
-        <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-            <img style={pictureStyle} src={user.profilePic} alt={user.username} />
-            <h2>{user.firstName+' '+ user.lastName}</h2>
-        </div>
-        {user.pictures.map(p=>{
-            return <img key={p} style={pictureStyle} src={p} alt={user.username} />
-        })}
-        <div>{questions[user.promptChoices[0]]}</div>
-        <div>{user.promptAnswers[0]}</div>
-        <div>{questions[user.promptChoices[1]]}</div>
-        <div>{user.promptAnswers[1]}</div>
-        <div>{questions[user.promptChoices[2]]}</div>
-        <div>{user.promptAnswers[2]}</div>
-        <div>Age: {user.age}</div>
-        <div>Job: {user.job}</div>
-        <div>Gender: {genders[user.gender]}</div>
-        <div>Interested In:</div>
-        {user.interestedIn.map(i=>{return genders[i]})} */}
