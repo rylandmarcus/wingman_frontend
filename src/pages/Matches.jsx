@@ -15,7 +15,7 @@ const Matches = () => {
             paddingLeft:'80px',
             paddingRight:'80px',
         }}>
-            <h2 style={{color:'#D6D6D7', padding:'25px', fontSize:'50px'}}>Matches</h2>
+            <h2 style={{color:'#D6D6D7', paddingTop:'25px', fontSize:'60px', fontFamily: "'Cedarville Cursive', cursive"}}>Matches</h2>
             {matches.map(match=>{
                 return (
                     <div key={match._id} style={{

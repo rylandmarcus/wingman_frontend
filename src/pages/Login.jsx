@@ -49,7 +49,7 @@ const Login = () => {
                 width:'100px',                    
             }} src='/wingmanLogo.png' alt="Wingman Logo" />            
             </div>
-        <h1 style={{color:'#D6D6D7'}}>Log in</h1>
+        <h1 style={{color:'#D6D6D7'}} className='needsFontHeading'>Log in</h1>
         <form onSubmit={login} style={{
           display:'flex',
           flexDirection:'column',

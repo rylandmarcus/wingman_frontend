@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
+import { io } from 'socket.io-client';
 
 const Findmatches = () => {
     const token = localStorage.getItem('token')
     if (!token){
         window.location.href = '/login'
     }
+    const socket = io.connect(process.env.REACT_APP_URL)
     const questions = [
       'What is your favorite color?',
       'What is your favorite animal?',
@@ -46,6 +48,8 @@ const Findmatches = () => {
         // body: JSON.stringify({match:match}),
       });
       if (reactedTo.likes.includes(token)){
+        socket.emit('notify', reactedTo._id, 'match')
+        socket.emit('notify', token, 'match')
         console.log('match');
         //post a new chat
         // const newChat = await fetch(process.env.REACT_APP_URL+'chats/'+token+'/'+reactedTo._id, {
@@ -82,7 +86,7 @@ const Findmatches = () => {
             paddingLeft:'80px',
             paddingRight:'80px',
           }}>
-        <h2 style={{color:'#D6D6D7', padding:'25px', fontSize:'50px'}}>Find a Match!</h2>
+        <h2 style={{fontFamily: "'Cedarville Cursive', cursive",color:'#D6D6D7', paddingTop:'20px', fontSize:'60px'}}>Find a Match!</h2>
         <div style={{
           display: 'flex',
           flexDirection: 'row',

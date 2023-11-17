@@ -20,7 +20,7 @@ const Messages = () => {
     // console.log(openChat);
   return (
     <div style={{backgroundImage:'linear-gradient(white, pink, lightcoral, red)', minHeight:'1000px', padding:'50px 150px 0px 150px',}}>
-        <h2>Messages</h2>
+        <h2 style={{fontFamily: "'Cedarville Cursive', cursive", fontSize:'60px', marginTop:'0px', marginBottom:'20px'}}>Messages</h2>
         <div style={{
           display:'flex', 
           flexDirection:'row', 
@@ -39,7 +39,7 @@ const Messages = () => {
           overflowY:'scroll',
           color:'#D6D6D7',
         }}>
-          <h3>Select a Conversation to Open</h3>
+          <h3 className='needsFontHeading'>Select a Conversation to Open</h3>
             {chats.map(chat=>{
               return <div key={chat._id}>
                 {/* return <div key={chat.users[0]._id}> */}

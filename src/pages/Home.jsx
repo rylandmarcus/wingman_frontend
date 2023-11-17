@@ -49,7 +49,7 @@ const Home = () => {
             paddingBottom:'50px',
         }}> 
 
-        <h2 style={{margin:'0px', padding:'25px', fontSize:'50px', color:'#D6D6D7'}}>Welcome to Wingman</h2>
+        <h2 style={{margin:'0px', padding:'25px', fontSize:'70px', color:'#D6D6D7', fontFamily: "'Cedarville Cursive', cursive"}}>Welcome to Wingman</h2>
         <h3 style={{color:'#D6D6D7'}}>View your profile here:</h3>
         <Link className='homeButton' to={`/profiles/${token}`} style={{
             textDecoration:'none',
