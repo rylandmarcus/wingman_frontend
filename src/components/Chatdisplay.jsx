@@ -3,7 +3,7 @@ import React from 'react'
 const Chatdisplay = ({chat}) => {
   const styleYourMessage = {
     color:'#202124',
-    textAlign:'right',
+    textAlign:'left',
     fontSize:'25px',
     backgroundColor:'lightcoral',
     width:'fit-content',
@@ -14,7 +14,7 @@ const Chatdisplay = ({chat}) => {
     marginBottom:'10px',
     marginTop:'10px',
     maxWidth:'400px',
-    wordBreak:'break-all',
+    wordwrap:'break-word',
   }
   const styleTheirMessage = {
     color:'#202124',
@@ -29,7 +29,7 @@ const Chatdisplay = ({chat}) => {
     marginBottom:'10px',
     marginTop:'10px',
     maxWidth:'400px',
-    wordBreak:'break-all',
+    wordwrap:'break-word',
   }
   return (
     <div>
@@ -37,7 +37,9 @@ const Chatdisplay = ({chat}) => {
         let writer
         chat.authors[i]==chat.users[0]._id ? writer = chat.users[0].firstName : writer = 'You'
         return <div key={message+i}>
-          <div style={writer=='You'? styleYourMessage : styleTheirMessage}>{writer+': '+message}</div>
+          <div style={writer=='You'? styleYourMessage : styleTheirMessage}>
+            {writer+': '+message}
+            </div>
         </div>
       })}
     </div>
